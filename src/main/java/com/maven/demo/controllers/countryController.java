@@ -1,7 +1,6 @@
 package com.maven.demo.controllers;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import com.maven.demo.model.Country;
 import com.maven.demo.services.countryService;
@@ -27,6 +26,6 @@ public class countryController {
 
     @PostMapping
     public Country saveCountry(@RequestBody Country country) {
-        return  this.countryService.saveCountry(country)
+        return this.countryService.saveCountry(country);
     }
 }
