@@ -1,6 +1,5 @@
 package com.maven.demo.controllers;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -8,13 +7,7 @@ import com.maven.demo.model.Country;
 import com.maven.demo.services.countryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/country")
@@ -38,7 +31,7 @@ public class countryController {
         return this.countryService.getIdCountrys(id);
     }
 
-    @DeleteMapping(Path = "/{id}")
+    @DeleteMapping(path = "/{id}")
     public String deleteCountryId(@PathVariable("id") Long id) {
         boolean ok = this.countryService.deleteCountry(id);
         if (ok) {

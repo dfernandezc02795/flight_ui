@@ -23,6 +23,9 @@ public class Country implements Serializable{
     @OneToMany(mappedBy = "countryId")
     List<Passenger> passengers;
 
+    @OneToMany(mappedBy = "countryId")
+    List<Airport> airports;
+
     @JsonCreator
     public Country() {
     }  
