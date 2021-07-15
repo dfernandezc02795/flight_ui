@@ -29,7 +29,7 @@ public class Passenger {
     @Column(nullable = false)
     private Date birthDate;
 
-    @Column(length = 25, nullable = false)
+    @Column(length = 25, nullable = false, unique = true)
     private String numberDocument;
 
     @Column(length = 18, nullable = true)

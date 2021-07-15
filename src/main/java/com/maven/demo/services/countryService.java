@@ -1,6 +1,6 @@
 package com.maven.demo.services;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import com.maven.demo.model.Country;
 import com.maven.demo.repository.countryRepository;
@@ -21,6 +21,21 @@ public class countryService {
     public Country saveCountry(Country country) {
         return countryRepository.save(country);
     }
+
+    public Optional<Country> getIdCountrys(Long id) {
+        return countryRepository.findById(id);
+    }
+
+    public boolean deleteCountry(long id) {
+        try {
+            countryRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
 
 
     
