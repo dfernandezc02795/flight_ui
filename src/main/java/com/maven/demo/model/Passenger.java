@@ -1,9 +1,14 @@
 package com.maven.demo.model;
 
+import java.sql.Date;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "passengers")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Passenger {
 
 
@@ -21,6 +26,9 @@ public class Passenger {
     @Column(length = 20, nullable = false)
     private String typeDocument;
 
+    @Column(nullable = false)
+    private Date birthDate;
+
     @Column(length = 25, nullable = false)
     private String numberDocument;
 
@@ -30,8 +38,17 @@ public class Passenger {
     @Column(length = 25, nullable = true)
     private String email;
 
-    @Column(nullable = true)
-    private long countryId;
+    @ManyToOne
+    @JoinColumn(name = "countryId")
+    private Country countryId;
+
+    public Passenger() {
+    }
+
+    public Passenger(Country countryId) {
+        this.countryId = countryId;
+    }
+    
 
     public long getIdPassenger() {
         return idPassenger;
@@ -65,6 +82,14 @@ public class Passenger {
         this.typeDocument = typeDocument;
     }
 
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
     public String getNumberDocument() {
         return numberDocument;
     }
@@ -89,13 +114,14 @@ public class Passenger {
         this.email = email;
     }
 
-    public long getCountryId() {
+    public Country getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(long countryId) {
+    public void setCountryId(Country countryId) {
         this.countryId = countryId;
-    }   
+    }
+    
 }
 
 
