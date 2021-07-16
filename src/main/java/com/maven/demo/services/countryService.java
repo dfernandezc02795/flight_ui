@@ -26,7 +26,7 @@ public class countryService {
         return countryRepository.findById(id);
     }
 
-    public boolean deleteCountry(long id) {
+    public boolean deleteCountry(Long id) {
         try {
             countryRepository.deleteById(id);
             return true;
