@@ -39,6 +39,9 @@ public class Reserve {
     @OneToMany(mappedBy = "reserveId")
     List<Pay> payments;
 
+    @OneToMany(mappedBy = "reserveId")
+    List<Flight> flights;
+
     public Reserve() {
     }    
 

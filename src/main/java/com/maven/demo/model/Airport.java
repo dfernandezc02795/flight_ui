@@ -1,5 +1,7 @@
 package com.maven.demo.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,11 +24,19 @@ public class Airport {
     @JoinColumn(name = "countryId")
     private Country countryId;
 
+    @OneToMany
+    @JoinColumn(name = "airportId")
+    List<Flight> flights;
+
     public Airport() {
     }
 
     public Airport(Country countryId) {
         this.countryId = countryId;
+    }
+
+    public Airport(Long idAirport) {
+        this.idAirport = idAirport;
     }
 
     public Long getIdAirport() {

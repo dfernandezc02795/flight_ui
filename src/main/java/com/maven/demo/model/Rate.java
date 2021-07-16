@@ -1,5 +1,7 @@
 package com.maven.demo.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -20,8 +22,8 @@ public class Rate {
     @Column(nullable = false)
     private int valuePay;
 
-    // @OneToMany(mappedBy = "rateId")
-    // List<Flight> flights;
+    @OneToMany(mappedBy = "rateId")
+    List<Flight> flights;
 
     @JsonCreator
     public Rate() {
