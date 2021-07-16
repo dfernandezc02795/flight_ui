@@ -1,6 +1,7 @@
 package com.maven.demo.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -42,13 +43,20 @@ public class Passenger {
     @JoinColumn(name = "countryId")
     private Country countryId;
 
+    @OneToMany(mappedBy = "passengerId")
+    List<Pay> payments;
+
+
     public Passenger() {
     }
 
     public Passenger(Country countryId) {
         this.countryId = countryId;
     }
-    
+
+    public Passenger(long idPassenger) {
+        this.idPassenger = idPassenger;
+    }
 
     public long getIdPassenger() {
         return idPassenger;
