@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 @Entity
 @Table(name = "itinerary")
 public class Itinerario {
@@ -40,6 +42,7 @@ public class Itinerario {
     @OneToMany(mappedBy = "itineraryId")
     List<Reserve> reserves;
 
+    @JsonCreator
     public Itinerario() {
     }
 
@@ -51,7 +54,13 @@ public class Itinerario {
         this.destinationId = destinationId;
     }
 
-   public Long getIdItinerary() {
+    
+
+    public Itinerario(Long idItinerary) {
+        this.idItinerary = idItinerary;
+    }
+
+    public Long getIdItinerary() {
         return idItinerary;
     }
 
