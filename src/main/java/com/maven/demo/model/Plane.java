@@ -1,5 +1,7 @@
 package com.maven.demo.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,11 +23,18 @@ public class Plane {
     @JoinColumn(name =  "airlineId")
     private Airline airlineId;
 
+    @OneToMany(mappedBy = "planeId")
+    List<Flight> flights;
+
     public Plane() {
     }
 
     public Plane(Airline airlineId) {
         this.airlineId = airlineId;
+    }
+
+    public Plane(Long idPlane) {
+        this.idPlane = idPlane;
     }
 
     public Long getIdPlane() {
@@ -59,9 +68,4 @@ public class Plane {
     public void setAirlineId(Airline airlineId) {
         this.airlineId = airlineId;
     }
-
-    
-
-
-    
 }

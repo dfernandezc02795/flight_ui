@@ -34,8 +34,6 @@ public class Country implements Serializable{
         this.idCountry = idCountry;
     }
 
-
-
     public Long getIdCountry() {
         return idCountry;
     }
