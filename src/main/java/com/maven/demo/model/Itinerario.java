@@ -2,6 +2,7 @@ package com.maven.demo.model;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,10 +37,11 @@ public class Itinerario {
     @JoinColumn(name = "destinationId")
     private Destination destinationId;
 
+    @OneToMany(mappedBy = "itineraryId")
+    List<Reserve> reserves;
+
     public Itinerario() {
     }
-
-    
 
     public Itinerario(Origin originId) {
         this.originId = originId;
