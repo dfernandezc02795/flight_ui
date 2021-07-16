@@ -52,9 +52,4 @@ public class Airport {
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
     }
-
-    
-
-
-    
 }
