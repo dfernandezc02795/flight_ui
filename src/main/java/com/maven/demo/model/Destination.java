@@ -1,10 +1,13 @@
 package com.maven.demo.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,9 @@ public class Destination {
     @Column(length = 40, nullable = false)
     private String city;
 
+    @OneToMany(mappedBy = "destinationId")
+    List<Itinerario> itineraries;
+    
     public Destination() {
     }
 
@@ -41,4 +47,5 @@ public class Destination {
     public void setCity(String city) {
         this.city = city;
     }
+
 }
