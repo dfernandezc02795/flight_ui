@@ -39,6 +39,11 @@ public class Airport {
         this.idAirport = idAirport;
     }
 
+    public Airport(String name, Country countryId) {
+        this.name = name;
+        this.countryId = countryId;
+    }
+
     public Long getIdAirport() {
         return idAirport;
     }

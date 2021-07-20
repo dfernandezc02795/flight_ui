@@ -32,6 +32,11 @@ public class Airline {
         this.idAirline = idAirline;
     }
 
+    public Airline(String nit, String name) {
+        this.nit = nit;
+        this.name = name;
+    }
+
     public Long getIdAirline() {
         return idAirline;
     }

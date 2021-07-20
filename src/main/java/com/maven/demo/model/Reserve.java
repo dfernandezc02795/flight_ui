@@ -1,6 +1,6 @@
 package com.maven.demo.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
@@ -26,8 +28,9 @@ public class Reserve {
     @Column(unique = true, nullable = false, length = 20)
     private String codeReserve;
 
-    @Column(nullable = false)
-    private Date dateReserve;
+    @Column(nullable = false)    
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateReserve;
 
     @Column(nullable = false)
     private int totalPay;
@@ -53,6 +56,13 @@ public class Reserve {
         this.idReserve = idReserve;
     }
 
+    public Reserve(String codeReserve, LocalDate dateReserve, int totalPay, Itinerario itineraryId) {
+        this.codeReserve = codeReserve;
+        this.dateReserve = dateReserve;
+        this.totalPay = totalPay;
+        this.itineraryId = itineraryId;
+    }
+
     public Long getIdReserve() {
         return idReserve;
     }
@@ -68,12 +78,12 @@ public class Reserve {
     public void setCodeReserve(String codeReserve) {
         this.codeReserve = codeReserve;
     }
-
-    public Date getDateReserve() {
+    
+    public LocalDate getDateReserve() {
         return dateReserve;
     }
 
-    public void setDateReserve(Date dateReserve) {
+    public void setDateReserve(LocalDate dateReserve) {
         this.dateReserve = dateReserve;
     }
 

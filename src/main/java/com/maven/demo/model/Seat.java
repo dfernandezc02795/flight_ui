@@ -41,6 +41,13 @@ public class Seat {
         this.idSeat = idSeat;
     }
 
+    public Seat(int rowSeat, String letterSeat, String locationSeat, String typeSeat) {
+        this.rowSeat = rowSeat;
+        this.letterSeat = letterSeat;
+        this.locationSeat = locationSeat;
+        this.typeSeat = typeSeat;
+    }
+
     public Long getIdSeat() {
         return idSeat;
     }

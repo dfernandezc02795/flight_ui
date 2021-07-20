@@ -1,7 +1,7 @@
 package com.maven.demo.model;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "itinerary")
@@ -26,10 +27,12 @@ public class Itinerario {
     private Long idItinerary;
 
     @Column(nullable = false)
-    private Date dateItinerary;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateItinerary;
     
     @Column(nullable = false)
-    private Time timeItinerary;
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime timeItinerary;
 
     @ManyToOne
     @JoinColumn(name = "originId")
@@ -53,8 +56,14 @@ public class Itinerario {
     public Itinerario(Destination destinationId) {
         this.destinationId = destinationId;
     }
-
     
+
+    public Itinerario(LocalDate dateItinerary, LocalTime timeItinerary, Origin originId, Destination destinationId) {
+        this.dateItinerary = dateItinerary;
+        this.timeItinerary = timeItinerary;
+        this.originId = originId;
+        this.destinationId = destinationId;
+    }
 
     public Itinerario(Long idItinerary) {
         this.idItinerary = idItinerary;
@@ -67,25 +76,27 @@ public class Itinerario {
     public void setIdItinerary(Long idItinerary) {
         this.idItinerary = idItinerary;
     }
+    
 
-    public Date getDateItinerary() {
+    public LocalDate getDateItinerary() {
         return dateItinerary;
     }
 
-    public void setDateItinerary(Date dateItinerary) {
+    public void setDateItinerary(LocalDate dateItinerary) {
         this.dateItinerary = dateItinerary;
     }
-
-    public Time getTimeItinerary() {
-        return timeItinerary;
-    }
-
-    public void setTimeItinerary(Time timeItinerary) {
-        this.timeItinerary = timeItinerary;
-    }
+    
 
     public Origin getOriginId() {
         return originId;
+    }
+
+    public LocalTime getTimeItinerary() {
+        return timeItinerary;
+    }
+
+    public void setTimeItinerary(LocalTime timeItinerary) {
+        this.timeItinerary = timeItinerary;
     }
 
     public void setOriginId(Origin originId) {

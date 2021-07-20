@@ -33,6 +33,10 @@ public class Origin {
     public Origin(Long idOrigin) {
         this.idOrigin = idOrigin;
     }
+    
+    public Origin(String city) {
+        this.city = city;
+    }
 
     public Long getIdOrigin() {
         return idOrigin;

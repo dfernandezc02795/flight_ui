@@ -37,6 +37,12 @@ public class Plane {
         this.idPlane = idPlane;
     }
 
+    public Plane(String registrationNumber, int capacity, Airline airlineId) {
+        this.registrationNumber = registrationNumber;
+        this.capacity = capacity;
+        this.airlineId = airlineId;
+    }
+
     public Long getIdPlane() {
         return idPlane;
     }

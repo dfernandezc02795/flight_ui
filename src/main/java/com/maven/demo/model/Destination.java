@@ -35,6 +35,10 @@ public class Destination {
     public Long getIdDestination() {
         return idDestination;
     }
+    
+    public Destination(String city) {
+        this.city = city;
+    }
 
     public void setIdDestination(Long idDestination) {
         this.idDestination = idDestination;
