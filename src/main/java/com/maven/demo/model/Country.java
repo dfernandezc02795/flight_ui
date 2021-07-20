@@ -20,7 +20,7 @@ public class Country implements Serializable{
     @Column(length = 30, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "countryId")
+    @OneToMany(mappedBy = "countryId", orphanRemoval = true)
     List<Passenger> passengers;
 
     @OneToMany(mappedBy = "countryId")
@@ -32,6 +32,10 @@ public class Country implements Serializable{
 
     public Country(Long idCountry) {
         this.idCountry = idCountry;
+    }
+
+    public Country(String name) {
+        this.name = name;
     }
 
     public Long getIdCountry() {

@@ -1,6 +1,8 @@
 package com.maven.demo.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
+//import java.util.List;
 import java.util.Optional;
 
 import com.maven.demo.model.Passenger;
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -34,8 +39,18 @@ public class passengerController {
     }
 
     @GetMapping(value = "/{id}")
-    public Optional<Passenger> getPassengerId(@PathVariable("id") Long id){
+    public Optional<Passenger> getPassengerId(@PathVariable("id") Long id) {
         return this.passengerService.getIdPassengers(id);
+    }
+    
+    @GetMapping("/query")
+    public List<Passenger> getByDocumentPassenger(@RequestParam("document") String document) {
+        return this.passengerService.getByDocumentPassenger(document);
+    }
+    
+    @PutMapping(path = "/{id}")
+    public Passenger updatePassenger(@RequestBody Passenger passenger, @PathVariable("id") Long id){
+        return this.passengerService.updatePassenger(passenger, id);
     }
     
     @DeleteMapping(path = "/{id}")

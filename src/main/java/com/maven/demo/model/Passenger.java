@@ -1,17 +1,15 @@
 package com.maven.demo.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "passengers")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Table(name = "passenger")
 public class Passenger {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,15 +18,16 @@ public class Passenger {
 
     @Column(length = 25, nullable = false)
     private String name;
-    
+
     @Column(length = 50, nullable = false)
     private String lastName;
-    
+
     @Column(length = 20, nullable = false)
     private String typeDocument;
 
     @Column(nullable = false)
-    private Date birthDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
 
     @Column(length = 25, nullable = false, unique = true)
     private String numberDocument;
@@ -43,10 +42,10 @@ public class Passenger {
     @JoinColumn(name = "countryId")
     private Country countryId;
 
-    @OneToMany(mappedBy = "passengerId")
+    @OneToMany(mappedBy = "passengerId", orphanRemoval = true)
     List<Pay> payments;
 
-
+    
     public Passenger() {
     }
 
@@ -56,6 +55,17 @@ public class Passenger {
 
     public Passenger(long idPassenger) {
         this.idPassenger = idPassenger;
+    }
+    
+    public Passenger(LocalDate birthDate, Country countryId, String email, String lastName, String name, String numberDocument,String telephone,String typeDocument) {
+        this.name = name;
+        this.lastName = lastName;
+        this.typeDocument = typeDocument;
+        this.birthDate = birthDate;
+        this.numberDocument = numberDocument;
+        this.telephone = telephone;
+        this.email = email;
+        this.countryId = countryId;
     }
 
     public long getIdPassenger() {
@@ -90,11 +100,11 @@ public class Passenger {
         this.typeDocument = typeDocument;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -129,7 +139,7 @@ public class Passenger {
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
     }
-    
+
 }
 
 

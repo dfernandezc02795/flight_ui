@@ -1,6 +1,6 @@
 package com.maven.demo.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "pay")
@@ -21,7 +23,8 @@ public class Pay {
     private Long idPay;
 
     @Column(nullable = false)
-    private Date datePay;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate datePay;
 
     @Column(nullable = false)
     private int valuePay;
@@ -51,6 +54,14 @@ public class Pay {
         this.reserveId = reserveId;
     }
 
+    public Pay(LocalDate datePay, int valuePay, String typeVoucher, String numberVoucher, Passenger passengerId) {
+        this.datePay = datePay;
+        this.valuePay = valuePay;
+        this.typeVoucher = typeVoucher;
+        this.numberVoucher = numberVoucher;
+        this.passengerId = passengerId;
+    }
+
     public Long getIdPay() {
         return idPay;
     }
@@ -59,11 +70,11 @@ public class Pay {
         this.idPay = idPay;
     }
 
-    public Date getDatePay() {
+    public LocalDate getDatePay() {
         return datePay;
     }
 
-    public void setDatePay(Date datePay) {
+    public void setDatePay(LocalDate datePay) {
         this.datePay = datePay;
     }
 

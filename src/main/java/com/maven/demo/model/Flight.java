@@ -55,13 +55,24 @@ public class Flight {
     }
 
     public Flight(Plane planeId, Seat seatId, Rate rateId, Reserve reserveId, Airport airportId) {
-    this.planeId = planeId;
-    this.seatId = seatId;
-    this.rateId = rateId;
-    this.reserveId = reserveId;
-    this.airportId = airportId;
+        this.planeId = planeId;
+        this.seatId = seatId;
+        this.rateId = rateId;
+        this.reserveId = reserveId;
+        this.airportId = airportId;
     }
-
+    
+    public Flight(String flightNumber, String flightType, String stateFlight, Plane planeId, Seat seatId, Rate rateId,
+            Reserve reserveId, Airport airportId) {
+        this.flightNumber = flightNumber;
+        this.flightType = flightType;
+        this.stateFlight = stateFlight;
+        this.planeId = planeId;
+        this.seatId = seatId;
+        this.rateId = rateId;
+        this.reserveId = reserveId;
+        this.airportId = airportId;
+    }
 
     public void setIdFlight(Long idFlight) {
         this.idFlight = idFlight;

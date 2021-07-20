@@ -1,7 +1,6 @@
 package com.maven.demo.services;
 
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.*;
 
 import com.maven.demo.model.Passenger;
 import com.maven.demo.repository.passengerRepository;
@@ -24,6 +23,25 @@ public class passengerService {
 
     public Optional<Passenger> getIdPassengers(Long id) {
         return passengerRepository.findById(id);
+    }
+
+    public List<Passenger> getByDocumentPassenger(String numberDocument) {
+        return passengerRepository.findBynumberDocument(numberDocument);
+    }
+
+    public Passenger updatePassenger(Passenger passenger, Long id) {
+        
+        Optional<Passenger> optional = passengerRepository.findById(passenger.getIdPassenger());
+
+        Passenger exisPassenger = optional.get();
+        exisPassenger.setName(passenger.getName());
+        exisPassenger.setLastName(passenger.getLastName());
+        exisPassenger.setBirthDate(passenger.getBirthDate());
+        exisPassenger.setTelephone(passenger.getTelephone());
+        exisPassenger.setEmail(passenger.getEmail());
+        exisPassenger.setCountryId(passenger.getCountryId());
+
+        return passengerRepository.save(exisPassenger);
     }
 
     public boolean deletePassanger(Long id) {

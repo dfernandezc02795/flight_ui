@@ -38,6 +38,11 @@ public class Rate {
         this.valuePay = valuePay;
     }
 
+    public Rate(String classPlane, int valuePay) {
+        this.classPlane = classPlane;
+        this.valuePay = valuePay;
+    }
+
     public Long getIdRate() {
         return idRate;
     }
