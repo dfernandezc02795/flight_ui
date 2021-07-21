@@ -56,17 +56,6 @@ public class Itinerario {
     public Itinerario(Destination destinationId) {
         this.destinationId = destinationId;
     }
-<<<<<<< HEAD
-
-    public Itinerario(LocalDate dateItinerary, LocalTime timeItinerary, Origin originId, Destination destinationId) {
-        this.dateItinerary = dateItinerary;
-        this.timeItinerary = timeItinerary;
-        this.originId = originId;
-        this.destinationId = destinationId;
-    }
-=======
-    
->>>>>>> develop
 
     public Itinerario(LocalDate dateItinerary, LocalTime timeItinerary, Origin originId, Destination destinationId) {
         this.dateItinerary = dateItinerary;
@@ -96,8 +85,6 @@ public class Itinerario {
         this.dateItinerary = dateItinerary;
     }
     
-<<<<<<< HEAD
-
     public Origin getOriginId() {
         return originId;
     }
@@ -110,21 +97,6 @@ public class Itinerario {
         this.timeItinerary = timeItinerary;
     }
 
-=======
-
-    public Origin getOriginId() {
-        return originId;
-    }
-
-    public LocalTime getTimeItinerary() {
-        return timeItinerary;
-    }
-
-    public void setTimeItinerary(LocalTime timeItinerary) {
-        this.timeItinerary = timeItinerary;
-    }
-
->>>>>>> develop
     public void setOriginId(Origin originId) {
         this.originId = originId;
     }
