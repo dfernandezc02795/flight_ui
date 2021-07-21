@@ -56,7 +56,6 @@ public class Itinerario {
     public Itinerario(Destination destinationId) {
         this.destinationId = destinationId;
     }
-    
 
     public Itinerario(LocalDate dateItinerary, LocalTime timeItinerary, Origin originId, Destination destinationId) {
         this.dateItinerary = dateItinerary;
