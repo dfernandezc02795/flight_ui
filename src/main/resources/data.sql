@@ -1,0 +1,95 @@
+--
+/*
+Para que me funcione el script deben de estar creada tanto la base de datos como las tablas respectivas de lo contrario me sale error. Es por tal motivo que esta comentado el script
+*/
+
+--
+
+-- /*Country*/
+-- INSERT INTO
+--   `db_flights`.`country` (`name`)
+-- VALUES
+--   ('Ecuador');
+--   /*Airport*/
+-- INSERT INTO
+--   `db_flights`.`airport` (`name`, `country_id`)
+-- VALUES
+--   ('Mantecaña', 1);
+--   /*Airline*/
+-- INSERT INTO
+--   `db_flights`.`airline` (`name`, `nit`)
+-- VALUES
+--   ('Avianca', '987-987');
+--   /*Plane*/
+-- INSERT INTO
+--   `db_flights`.`plane` (`capacity`, `registration_number`, `airline_id`)
+-- VALUES
+--   (12, 'KF123', 1);
+--   /*Rate*/
+-- INSERT INTO
+--   `db_flights`.`rate` (`class_plane`, `value_pay`)
+-- VALUES
+--   ('VIP123', 20000);
+--   /*Origin*/
+-- INSERT INTO
+--   `db_flights`.`origin` (`city`)
+-- VALUES
+--   ('Armenia');
+--   /*Destintation*/
+-- INSERT INTO
+--   `db_flights`.`destination` (`city`)
+-- VALUES
+--   ('Medellin');
+--   /*Itinerary*/
+-- INSERT INTO
+--   `db_flights`.`itinerary` (
+--     `date_itinerary`,
+--     `time_itinerary`,
+--     `destination_id`,
+--     `origin_id`
+--   )
+-- VALUES
+--   ('2000/12/12', '12:00:00', 1, 1);
+--   /*Reserve*/
+-- INSERT INTO
+--   `db_flights`.`reserve` (
+--     `code_reserve`,
+--     `date_reserve`,
+--     `total_pay`,
+--     `itinerary_id`
+--   )
+-- VALUES
+--   ('4567', '2000/12/12', 200000, 1);
+--   /*Seat*/
+-- INSERT INTO
+--   `db_flights`.`seat` (
+--     `letter_seat`,
+--     `location_seat`,
+--     `row_seat`,
+--     `type_seat`
+--   )
+-- VALUES
+--   ('A', 'Centro', 3, "VIP");
+--   /*Flight*/
+-- INSERT INTO
+--   `db_flights`.`flight` (
+--     `flight_number`,
+--     `flight_type`,
+--     `state_flight`,
+--     `airport_id`,
+--     `plane_id`,
+--     `rate_id`,
+--     `reserve_id`,
+--     `seat_id`
+--   )
+-- VALUES
+--   (
+--     '1234',
+--     'Internacional',
+--     'Sin novedad',
+--     1,
+--     1,
+--     1,
+--     1,
+--     1
+--   );
