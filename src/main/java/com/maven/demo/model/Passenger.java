@@ -20,9 +20,9 @@ public class Passenger {
     private String name;
 
     @Column(length = 50, nullable = false)
-    private String lastName;
+    private String lastName; 
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 50, nullable = false)
     private String typeDocument;
 
     @Column(nullable = false)
@@ -44,6 +44,9 @@ public class Passenger {
 
     @OneToMany(mappedBy = "passengerId", orphanRemoval = true)
     List<Pay> payments;
+
+    @OneToMany(mappedBy = "passengerId")
+    List<Flight> flights;
 
     
     public Passenger() {
