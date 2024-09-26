@@ -1,6 +1,7 @@
 package com.maven.demo.services;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.maven.demo.model.Flight;
@@ -34,5 +35,9 @@ public class fligthService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public List<Flight> getByNumberFlights(String flightNumber) {
+        return flightRepository.findByFlightNumber(flightNumber);
     }
 }

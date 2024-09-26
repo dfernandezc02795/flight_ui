@@ -18,7 +18,7 @@ public class Flight {
     @Column(unique = true, nullable = false)
     private Long idFlight;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String flightNumber;
 
     @Column(nullable = false)
@@ -47,6 +47,10 @@ public class Flight {
     @JoinColumn(name = "airportId")
     private Airport airportId;
 
+    @ManyToOne
+    @JoinColumn(name="passengerId")
+    private Passenger passengerId;
+
     public Flight() {
     }
 
@@ -54,12 +58,13 @@ public class Flight {
         return idFlight;
     }
 
-    public Flight(Plane planeId, Seat seatId, Rate rateId, Reserve reserveId, Airport airportId) {
+    public Flight(Plane planeId, Seat seatId, Rate rateId, Reserve reserveId, Airport airportId, Passenger passengerId) {
         this.planeId = planeId;
         this.seatId = seatId;
         this.rateId = rateId;
         this.reserveId = reserveId;
         this.airportId = airportId;
+        this.passengerId = passengerId;
     }
     
     public Flight(String flightNumber, String flightType, String stateFlight, Plane planeId, Seat seatId, Rate rateId,
@@ -141,4 +146,14 @@ public class Flight {
     public void setAirportId(Airport airportId) {
         this.airportId = airportId;
     }
+
+    public Passenger getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(Passenger passengerId) {
+        this.passengerId = passengerId;
+    }
+
+    
 }

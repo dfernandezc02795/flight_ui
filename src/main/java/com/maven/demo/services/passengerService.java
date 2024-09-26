@@ -29,7 +29,7 @@ public class passengerService {
         return passengerRepository.findBynumberDocument(numberDocument);
     }
 
-    public Passenger updatePassenger(Passenger passenger, Long id) {
+    public Passenger updatePassenger(Passenger passenger) {
         
         Optional<Passenger> optional = passengerRepository.findById(passenger.getIdPassenger());
 

@@ -45,12 +45,15 @@ public class passengerController {
     
     @GetMapping("/query")
     public List<Passenger> getByDocumentPassenger(@RequestParam("document") String document) {
-        return this.passengerService.getByDocumentPassenger(document);
+        if (document.equals(""))
+            return this.getPassengers();
+        else
+            return this.passengerService.getByDocumentPassenger(document);
     }
     
     @PutMapping(path = "/{id}")
-    public Passenger updatePassenger(@RequestBody Passenger passenger, @PathVariable("id") Long id){
-        return this.passengerService.updatePassenger(passenger, id);
+    public Passenger updatePassenger(@RequestBody Passenger passenger) {
+        return this.passengerService.updatePassenger(passenger);
     }
     
     @DeleteMapping(path = "/{id}")
